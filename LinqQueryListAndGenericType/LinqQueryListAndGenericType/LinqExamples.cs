@@ -107,7 +107,7 @@ namespace LinqQueryListAndGenericType
                                   orderby item.lastName
                                   select item;
             Console.Write("the last element which is begining 'a' and sorted with lastname is: ");
-            if (filteredElements.Any())
+            if (filteredElements.Any()) //if at least there is an element
                 Console.WriteLine(filteredElements.Last());
             else
                 Console.WriteLine("there is no element!");

@@ -11,7 +11,8 @@ namespace LinqQueryListAndGenericType
             //LinqExamples.linqOrderby();
             //LinqExamples.linqWhereCustomClass();
             //LinqExamples.linqOrderbyCustomClass();
-            LinqExamples.linqGetJustLastElement();
+            //LinqExamples.linqGetJustLastElement();
+            LinqExamples.linqToUpperCustomElement();
         }
     }
 }

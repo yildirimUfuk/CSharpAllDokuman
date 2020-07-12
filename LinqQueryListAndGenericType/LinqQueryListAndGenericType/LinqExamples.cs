@@ -111,7 +111,28 @@ namespace LinqQueryListAndGenericType
                 Console.WriteLine(filteredElements.Last());
             else
                 Console.WriteLine("there is no element!");
-
+        }
+        public static void linqToUpperCustomElement()
+        {
+            var emp = new[]
+            {
+                new Employee("EEEEE","eeEee",2000),
+                new Employee("aAAAa","aAAAAA",5000),
+                new Employee("dDdDD","DDDDD",5123),
+                new Employee("bbBBb","bbbbB",4201),
+                new Employee("AAAa","cCcC",7000)
+            };
+            Console.WriteLine("all employees list is: ");
+            foreach (var item in emp)
+                Console.WriteLine(item.ToString());
+            var toUpperList = from item in emp
+                              let temp = item.firstName.ToUpper()//let is using for temporary variable and all works doing with this variable.
+                              where temp.StartsWith("A")
+                              orderby temp
+                              select item;
+            Console.WriteLine("starting with 'A' employees are: ");
+            foreach (var item in toUpperList)
+                Console.WriteLine(item.ToString());
         }
     }
 }

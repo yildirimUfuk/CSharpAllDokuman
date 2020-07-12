@@ -6,7 +6,12 @@ namespace LinqQueryListAndGenericType
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //LinqExamples.originalArr();
+            //LinqExamples.linqWhere();
+            //LinqExamples.linqOrderby();
+            //LinqExamples.linqWhereCustomClass();
+            //LinqExamples.linqOrderbyCustomClass();
+            LinqExamples.linqGetJustLastElement();
         }
     }
 }

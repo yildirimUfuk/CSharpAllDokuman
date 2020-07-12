@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.ComponentModel;
 
 namespace LinqQueryListAndGenericType
 {
@@ -62,6 +63,7 @@ namespace LinqQueryListAndGenericType
                                    where (item.MontlySalary >= 3000) && (item.MontlySalary <= 6000)
                                    //where item.MontlySalary%10==1//its possible.
                                    select item;
+            //select item.MontlySalary;//just salary
             Console.WriteLine("all employees who has salary between 3000 and 6000 per month");
             foreach (var item in filteredEmployee)
                 Console.WriteLine(item.ToString());//to string method has been overrided
@@ -77,13 +79,38 @@ namespace LinqQueryListAndGenericType
                 new Employee("a","ff",5900),
             };
             var orderedEmployee = from item in emp
-                                  orderby item.firstName,item.lastName
+                                  orderby item.firstName, item.lastName
                                   select item;
+            //select new { item.firstName, item.lastName };//a new object which has 2 attiribute "name" and "surname". List has this objects.
             Console.WriteLine("ordered employee list is: ");
             foreach (var item in orderedEmployee)
             {
                 Console.WriteLine(item.ToString());
             }
+
+        }
+        public static void linqGetJustLastElement()
+        {
+            var emp = new[] {
+                new Employee("a","aa", 2500),
+                new Employee("b","bb",1500),
+                new Employee("c","cc",5500),
+                new Employee("a","zz",9999),
+                new Employee("e","ee",7500),
+                new Employee("a","ff",5900),
+            };
+            Console.WriteLine("all emplotee are: ");
+            foreach (var item in emp)
+                Console.WriteLine(item.ToString());
+            var filteredElements = from item in emp
+                                  where item.firstName == "a"
+                                  orderby item.lastName
+                                  select item;
+            Console.Write("the last element which is begining 'a' and sorted with lastname is: ");
+            if (filteredElements.Any())
+                Console.WriteLine(filteredElements.Last());
+            else
+                Console.WriteLine("there is no element!");
 
         }
     }

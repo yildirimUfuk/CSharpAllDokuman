@@ -42,5 +42,49 @@ namespace LinqQueryListAndGenericType
                 Console.Write($"{item}");
             Console.WriteLine();
         }
+        public static void linqWhereCustomClass()
+        {
+            var emp = new[] {
+                new Employee("a", "aa", 2500),
+                new Employee("b","bb",1500),
+                new Employee("c","cc",5500),
+                new Employee("d","dd",2000),
+                new Employee("e","ee",7501),
+                new Employee("f","ff",5900),
+            };
+            Console.WriteLine("all amployees are: ");
+            foreach (var item in emp)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine();
+            var filteredEmployee = from item in emp
+                                   where (item.MontlySalary >= 3000) && (item.MontlySalary <= 6000)
+                                   //where item.MontlySalary%10==1//its possible.
+                                   select item;
+            Console.WriteLine("all employees who has salary between 3000 and 6000 per month");
+            foreach (var item in filteredEmployee)
+                Console.WriteLine(item.ToString());//to string method has been overrided
+        }
+        public static void linqOrderbyCustomClass()
+        {
+            var emp = new[] {
+                new Employee("a","aa", 2500),
+                new Employee("b","bb",1500),
+                new Employee("c","cc",5500),
+                new Employee("a","dd",2000),
+                new Employee("e","ee",7500),
+                new Employee("a","ff",5900),
+            };
+            var orderedEmployee = from item in emp
+                                  orderby item.firstName,item.lastName
+                                  select item;
+            Console.WriteLine("ordered employee list is: ");
+            foreach (var item in orderedEmployee)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
+        }
     }
 }
